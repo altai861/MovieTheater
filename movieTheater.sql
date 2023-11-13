@@ -74,6 +74,7 @@ create table tickets (
     customerId int,
     uzverId int not null,
     suudliinDugaar int not null,
+    borluulsanUne float,
     PRIMARY key (uzverId, suudliinDugaar)
 )
 
