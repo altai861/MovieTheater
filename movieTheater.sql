@@ -58,8 +58,8 @@ create table uzveruud (
     uzverId int primary key IDENTITY(1000, 1),
     movieId int not null,
     theaterId int not null,
-    startTime DATETIME,
-    endTime DATETIME,
+    startTime TIME,
+    endTime TIME,
     uzverDateStart date,
     uzverDateEnd date,
     price float, 
@@ -107,3 +107,29 @@ insert into movies values
 ('Inception', 2, 3, 'Christopher Nolan', '2010-07-08', 148, 'A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O., but his tragic past may doom the project and his team to disaster.', null),
 ('Interstellar', 3, 4, 'Christopher Nolan', '2014-10-26', 149, 'When Earth becomes uninhabitable in the future, a farmer and ex-NASA pilot, Joseph Cooper, is tasked to pilot a spacecraft, along with a team of researchers, to find a new planet for humans.', null),
 ('Spirited Away', 12, 3, 'Hayao Miyazaki', '2001-07-20', 125, 'During her family('')s move to the suburbs, a sullen 10-year-old girl wanders into a world ruled by gods, witches and spirits, a world where humans are changed into beasts.', null)
+
+insert into screen values 
+(1, 100, 10, 10),
+(1, 120, 12, 10),
+(1, 80, 10, 8),
+(1, 90, 9, 10),
+(1, 100, 10, 10),
+(2, 140, 14, 10),
+(2, 120, 12, 10),
+(2, 100, 10, 10),
+(2, 100, 10, 10),
+(2, 100, 10, 10)
+
+
+insert into uzveruud values 
+(100, 1, '15:30:00', '18:00:00', '2023-11-13', '2023-12-31', 10000, 500),
+(101, 1, '18:30:00', '21:00:00', '2023-11-13', '2023-12-31', 10000, 501),
+(102, 1, '15:00:00', '18:00:00', '2023-11-13', '2023-12-31', 11000, 502),
+(103, 1, '14:30:00', '17:30:00', '2023-11-13', '2023-12-31', 10000, 503),
+(104, 1, '18:30:00', '21:30:00', '2023-11-13', '2023-12-31', 12000, 504),
+(105, 2, '16:00:00', '18:30:00', '2023-11-13', '2023-12-31', 9000, 505),
+(106, 2, '15:30:00', '18:00:00', '2023-11-13', '2023-12-31', 10000, 505),
+(107, 2, '15:30:00', '18:00:00', '2023-11-13', '2023-12-31', 10000, 506),
+(108, 2, '15:30:00', '18:00:00', '2023-11-13', '2023-12-31', 10000, 507),
+(109, 2, '15:30:00', '18:00:00', '2023-11-13', '2023-12-31', 10000, 508),
+(110, 2, '15:30:00', '18:00:00', '2023-11-13', '2023-12-31', 10000, 509)
