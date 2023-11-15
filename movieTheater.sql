@@ -24,6 +24,12 @@ create table genre (
     genreName nvarchar(50)
 )
 
+create table secondgenre (
+    genreId int primary key IDENTITY(1, 1),
+    genreName nvarchar(50) 
+)
+
+
 create table movies (
     movieId int primary key IDENTITY(100, 1),
     title nvarchar(50),
@@ -91,6 +97,15 @@ insert into genre values
 ('Musical'),('Western'),('Historical'),('Biography'),
 ('War')
 
+insert into secondgenre values 
+('Comedy'),('Action'),('Adventure'),('Drama'),
+('Sci-Fi'),('Fantasy'),('Horror'),('Mystery'),
+('Thriller'),('Crime'),('Romance'),('Animation'),
+('Musical'),('Western'),('Historical'),('Biography'),
+('War')
+
+
+
 insert into theaters VALUES
 ('Urguu', N'WVFF+8W5, Ард Аюушийн өргөн чөлөө, Ulaanbaatar 16091', 5),
 ('Tengis', N'WWF3+3GC Tengis cinema, Ulaanbaatar 15141', 5)
@@ -134,3 +149,8 @@ insert into uzveruud values
 (108, 2, '15:30:00', '18:00:00', '2023-11-13', '2023-12-31', 10000, 507),
 (109, 2, '15:30:00', '18:00:00', '2023-11-13', '2023-12-31', 10000, 508),
 (110, 2, '15:30:00', '18:00:00', '2023-11-13', '2023-12-31', 10000, 509)
+
+
+select * from movies 
+join genre on movies.genreId = genre.genreId
+join secondgenre on movies.genreIdAlt = secondgenre.genreId
