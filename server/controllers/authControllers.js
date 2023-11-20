@@ -1,15 +1,14 @@
 const sql = require("mssql")
 
 const login = async (req, res) => {
-    const { username, password } = req.body;
-
-    if (!username || !password) {
+    const { username, phonenumber } = req.body;
+    if (!username || !phonenumber) {
         return res.status(400).json({ message: 'All fields are required' })
     }
 
     var request = new sql.Request();
 
-    request.query(`select * from customers where username='${username}'`, function (err, recordset) {
+    request.query(`select * from customers where username='${username}' and phonenumber='${phonenumber}'`, function (err, recordset) {
         if (err) {
             console.error(err);
             res.status(500).json({ error: 'Database query error' });
@@ -17,7 +16,7 @@ const login = async (req, res) => {
             if (recordset.recordset.length == 0) {
                 res.status(401).json({ "message": "Login not successful" })
             } else {
-                res.status(201).json({ userId: recordset.recordset[0].customerId })
+                res.status(201).json({ customerId: recordset.recordset[0].customerId })
             }
         }
     })
@@ -41,7 +40,7 @@ const register = async (req, res) => {
                     return res.status(401).json({ message: "Duplicate username detected. Change your username" })
                 } else {
                     const query = `
-                        insert into Users (username, email, phonenumber)
+                        insert into customers (username, email, phonenumber)
                         values(@username, @email, @phonenumber)
                     `;
 

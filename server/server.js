@@ -63,6 +63,8 @@ app.get('/', (req, res) => {
     res.send('Hello, World!');
 });
 
+app.use("/auth", require('./routes/authRoutes.js'))
+
 app.listen(3500, () => {
     console.log("Server is running on port 3500")
 })
