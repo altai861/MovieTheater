@@ -16,7 +16,8 @@ const login = async (req, res) => {
             if (recordset.recordset.length == 0) {
                 res.status(401).json({ "message": "Login not successful" })
             } else {
-                res.status(201).json({ customerId: recordset.recordset[0].customerId })
+                res.status(201).json({ customerId: recordset.recordset[0].customerId, 
+                                        username: recordset.recordset[0].username })
             }
         }
     })

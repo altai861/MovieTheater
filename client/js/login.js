@@ -21,6 +21,7 @@ class Login {
         })
         .then(function(response) {
             localStorage.setItem("customerId", response.data.customerId)
+            localStorage.setItem("username", response.data.username)
             window.location.replace("/");
             console.log(response.data);
         })
