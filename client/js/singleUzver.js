@@ -3,7 +3,7 @@ import axios from 'axios'
 
 document.addEventListener("DOMContentLoaded", () => {
     const uzverId = sessionStorage.getItem("uzverId")
-    const userId = sessionStorage.getItem("userId");
+    const userId = sessionStorage.getItem("customerId");
 
     console.log(uzverId);
     const mainDiv = document.querySelector(".content");
@@ -15,13 +15,12 @@ document.addEventListener("DOMContentLoaded", () => {
     
     renderUserTickets(uzverId, userId)
 
-    renderBuyTicket(uzverId)
+    renderBuyTicket(uzverId, userId)
 })
 
-async function renderBuyTicket(uzverId) {
-    const buyTicketDiv = document.querySelector(".buy-ticket");
+async function renderBuyTicket(uzverId, userId) {
 
-    let rows, cols, boughtSeats, endDate, startTime;
+    let rows, cols, boughtSeats, endDate, startTime, price;
 
     await axios.get(`http://localhost:3500/tickets/${uzverId}`)
     .then((response) => {
@@ -30,6 +29,7 @@ async function renderBuyTicket(uzverId) {
         cols = response.data.uzveruud[0].screenColumns
         endDate = response.data.uzveruud[0].uzverDateEnd
         startTime = response.data.uzveruud[0].startTime
+        price = response.data.uzveruud[0].price
         boughtSeats = response.data.tickets.map(obj => obj.suudliinDugaar)
     })
     .catch((error) => {
@@ -39,8 +39,8 @@ async function renderBuyTicket(uzverId) {
     console.log(cols, rows)
     console.log(boughtSeats)
 
-    initializeSeatChooser(rows, cols, boughtSeats)
-    initializeDateChooser(endDate, startTime)
+    //initializeSeatChooser(rows, cols, boughtSeats)
+    initializeDateChooser(endDate, startTime, uzverId)
     
     document.getElementById('ticket-form').addEventListener('submit', function(event) {
         event.preventDefault();
@@ -48,19 +48,32 @@ async function renderBuyTicket(uzverId) {
         const selectedSeats = Array.from(document.querySelectorAll('.selected')).map(td => td.textContent);
         const date = document.querySelector("#choose-date").value
 
-        if (date.trim() === "") {
-            alert("Үзвэр үзэх өдрөө сонгоно уу")
-        }
-        if (selectedSeats.length === 0) {
-            alert('Суудал сонгоно уу')
+        if (date.trim() === "" || selectedSeats.length === 0) {
+            alert("Үзвэр үзэх өдрөө сонгоно уу/Суудал сонгоно уу")
+        } else {
+            console.log('Selected seats: ', selectedSeats)
+            console.log(date)
+            const data = {
+                userId: userId,
+                uzverId: uzverId,
+                suudliinDugaaruud: selectedSeats,
+                date: date,
+                price: price
+            }
+            axios.post('http://localhost:3500/tickets', data)
+            .then(function(response) {
+                console.log(response.data)
+                location.reload()
+            })
+            .catch(function(error) {
+                console.error(error)
+            })
         }
 
-        console.log('Selected seats: ', selectedSeats)
-        console.log(date)
     })
 }
 
-function initializeDateChooser(endDate, startTime) {
+async function initializeDateChooser(endDate, startTime, uzverId) {
     const dateInput = document.getElementById("choose-date");
     let maxDate, minDate;
     console.log(endDate, startTime)
@@ -88,6 +101,32 @@ function initializeDateChooser(endDate, startTime) {
 
     dateInput.min = minDate
     dateInput.max = maxDate
+
+    let rows, cols, boughtSeats;
+
+
+    dateInput.addEventListener("change", (e) => {
+        console.log(e.target.value)
+        let value = e.target.value
+        if (value.trim() !== "") {
+            axios.get(`http://localhost:3500/tickets/${uzverId}/${value}`)
+            .then(function(response) {
+                console.log(response.data)
+                rows = response.data.uzveruud[0].screenRows
+                cols = response.data.uzveruud[0].screenColumns
+                boughtSeats = response.data.tickets.map(obj => obj.suudliinDugaar)
+                document.getElementById("seatChooser").innerHTML = ""
+                initializeSeatChooser(rows, cols, boughtSeats)
+            })
+            .catch(function(err) {
+                console.log(err)
+            })
+            initializeSeatChooser()
+        } else {
+            document.getElementById("seatChooser").innerHTML = ""
+        }
+
+    })
 }
 
 function initializeSeatChooser(rows, cols, boughtSeats) {
@@ -146,9 +185,40 @@ async function renderUserTickets(uzverId, userId) {
         
         console.log("no tickets")
     } else {
+        console.log(userTickets)
         // Here I will add the ticket UI
+        renderMyTickets(userTickets)
         console.log("you have tickets")
     }
+}
+
+
+function renderMyTickets(userTickets) {
+    const myTicketsDiv = document.querySelector(".my-tickets");
+    userTickets.map((ticket) => {
+        const ticketDiv = document.createElement("div");
+        ticketDiv.classList = "ticket"
+        const suudliinDugaar = document.createElement("p");
+        const date = document.createElement("p");
+
+        suudliinDugaar.innerText = "Суудлын дугаар: " + ticket.suudliinDugaar;
+        date.innerText = "Огноо: " + ticket.uzverDate.split("T")[0]
+
+        ticketDiv.appendChild(suudliinDugaar);
+        ticketDiv.appendChild(date)
+        myTicketsDiv.appendChild(ticketDiv)
+
+        ticketDiv.addEventListener("click", () => {
+            console.log(ticket)
+            if (ticket) {
+                console.log(ticket.suudliinDugaar)
+                console.log(ticket.uzverDate)
+                sessionStorage.setItem("suudliinDugaar", String(ticket.suudliinDugaar));
+                sessionStorage.setItem("uzverDate", String(ticket.uzverDate))
+            }
+            window.location.href = "/html/uzverUzii.html"
+        })
+    })
 }
 
 function getUzver(id) {

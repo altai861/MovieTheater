@@ -2,6 +2,13 @@
     font-family: "arial";
 }
 
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .st {
     border: 1px solid black;
     margin: 10px;
@@ -68,4 +75,28 @@ td.selected {
 
 #ticket-form {
     text-align: center;
+}
+
+.my-tickets {
+    display: flex;
+    border-top: 1px solid black;
+    width: 100%;
+}
+
+.ticket {
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 10px;
+}
+
+.ticket:hover {
+    background-color: aliceblue;
+}
+
+.buy-ticket {
+    width: 100%;
+    margin: 10px;
+    padding: 10px;
+    border-top: 1px solid black;
 }

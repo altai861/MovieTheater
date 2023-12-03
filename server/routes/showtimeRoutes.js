@@ -11,4 +11,5 @@ router.route("/:uzverId")
 router.route("/:uzverId/:customerId")
     .get(showtimeControllers.checkTicket)
 
+
 module.exports = router;

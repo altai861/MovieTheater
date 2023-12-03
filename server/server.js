@@ -65,6 +65,7 @@ app.get('/', (req, res) => {
 
 app.use("/auth", require('./routes/authRoutes.js'))
 app.use("/showtime", require("./routes/showtimeRoutes.js"))
+app.use("/tickets", require("./routes/ticketRoutes.js"))
 
 app.listen(3500, () => {
     console.log("Server is running on port 3500")

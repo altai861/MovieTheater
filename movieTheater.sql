@@ -43,8 +43,8 @@ create table screen (
     screenId int primary key IDENTITY(500, 1),
     theaterId int not null,
     suudliinToo int,
-    suudliinEgnee int,
-    suudliinMur int
+    screenRows int,
+    screenColumns int
 )
 
 create table uzveruud (
@@ -127,3 +127,4 @@ select * from uzveruud
 join movies on movies.movieId = uzveruud.movieId
 join theaters on theaters.theaterId = uzveruud.theaterId
 where GETDATE() between uzveruud.uzverDateStart and uzveruud.uzverDateEnd
+

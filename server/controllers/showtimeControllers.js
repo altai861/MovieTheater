@@ -53,6 +53,8 @@ const checkTicket = (req, res) => {
     })
 }
 
+
+
 module.exports = {
     getAllShowTimes,
     getSingleShowtime,
