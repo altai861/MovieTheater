@@ -66,6 +66,7 @@ create table uzveruud (
 create table tickets (
     customerId int,
     uzverId int not null,
+    uzverDate date not null,
     suudliinDugaar int not null,
     borluulsanUne float,
     PRIMARY key (uzverId, suudliinDugaar)
@@ -83,17 +84,17 @@ insert into theaters VALUES
 
 
 insert into movies values 
-('Spider-Man: Across the Spider-Verse', 'Animation;Adventure' , 'Joaquim Dos Santos', '2023-06-02', 140, 'Miles Morales catapults across the Multiverse, where he encounters a team of Spider-People charged with protecting its very existence. When the heroes clash on how to handle a new threat, Miles must redefine what it means to be a hero.', null, null),
-('The Godfather', 'Crime;Drama', 'Francis Ford Coppola', '1972-03-24', 175, 'Don Vito Corleone, head of a mafia family, decides to hand over his empire to his youngest son Michael. However, his decision unintentionally puts the lives of his loved ones in grave danger.', null, null),
-('The Wolf of Wall Street', 'Comedy;Biography', 'Martin Scorsese', '2013-12-09', 180, 'Based on the true story of Jordan Belfort, from his rise to a wealthy stock-broker living the high life to his fall involving crime, corruption and the federal government.', null, null),
-('Forrest Gump', 'Drama;Romance', 'Robert Zemeckis', '1994-07-06', 142, 'The history of the United States from the 1950s to the 70s unfolds from the perspective of an Alabama man with an IQ of 75, who yearns to be reunited with his childhood sweetheart.', null, null),
-('Braveheart', 'Biography;Drama', 'Mel Gibson', '1995-05-19', 178, 'Scottish warrior William Wallace leads his countrymen in a rebellion to free his homeland from the tyranny of King Edward I of England.', null, null),
-('Transformers','Action;Adventure', 'Micheal Bay', '2007-06-27', 144 , 'An ancient struggle between two Cybertronian races, the heroic Autobots and the evil Decepticons, comes to Earth, with a clue to the ultimate power held by a teenager.', null, null),
-('The Shawshank Redemption', 'Drama;Mystery', 'Frank Darabont', '1994-09-13', 142, 'Over the course of several years, two convicts form a friendship, seeking consolation and, eventually, redemption through basic compassion.', null, null),
-('Fight Club', 'Drama;Mystery', 'David Fincher', '1999-10-15', 139, 'An insomniac office worker and a devil-may-care soap maker form an underground fight club that evolves into much more.', null, null),
-('Inception', 'Action;Adventure', 'Christopher Nolan', '2010-07-08', 148, 'A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O., but his tragic past may doom the project and his team to disaster.', null, null),
-('Interstellar', 'Adventure;Drama', 'Christopher Nolan', '2014-10-26', 149, 'When Earth becomes uninhabitable in the future, a farmer and ex-NASA pilot, Joseph Cooper, is tasked to pilot a spacecraft, along with a team of researchers, to find a new planet for humans.', null, null),
-('Spirited Away', 'Animation;Adventure', 'Hayao Miyazaki', '2001-07-20', 125, 'During her family('')s move to the suburbs, a sullen 10-year-old girl wanders into a world ruled by gods, witches and spirits, a world where humans are changed into beasts.', null, null)
+('Spider-Man: Across the Spider-Verse', 'Animation;Adventure' , 'Joaquim Dos Santos', '2023-06-02', 140, 'Miles Morales catapults across the Multiverse, where he encounters a team of Spider-People charged with protecting its very existence. When the heroes clash on how to handle a new threat, Miles must redefine what it means to be a hero.', null, 'spiderman-across-spider-verse.jpeg'),
+('The Godfather', 'Crime;Drama', 'Francis Ford Coppola', '1972-03-24', 175, 'Don Vito Corleone, head of a mafia family, decides to hand over his empire to his youngest son Michael. However, his decision unintentionally puts the lives of his loved ones in grave danger.', null, 'godfather.jpeg'),
+('The Wolf of Wall Street', 'Comedy;Biography', 'Martin Scorsese', '2013-12-09', 180, 'Based on the true story of Jordan Belfort, from his rise to a wealthy stock-broker living the high life to his fall involving crime, corruption and the federal government.', null, 'wolf-wall-street.jpeg'),
+('Forrest Gump', 'Drama;Romance', 'Robert Zemeckis', '1994-07-06', 142, 'The history of the United States from the 1950s to the 70s unfolds from the perspective of an Alabama man with an IQ of 75, who yearns to be reunited with his childhood sweetheart.', null, 'forrest-gump.jpeg'),
+('Braveheart', 'Biography;Drama', 'Mel Gibson', '1995-05-19', 178, 'Scottish warrior William Wallace leads his countrymen in a rebellion to free his homeland from the tyranny of King Edward I of England.', null, 'braveheart.jpeg'),
+('Transformers','Action;Adventure', 'Micheal Bay', '2007-06-27', 144 , 'An ancient struggle between two Cybertronian races, the heroic Autobots and the evil Decepticons, comes to Earth, with a clue to the ultimate power held by a teenager.', null, 'transformers.jpeg'),
+('The Shawshank Redemption', 'Drama;Mystery', 'Frank Darabont', '1994-09-13', 142, 'Over the course of several years, two convicts form a friendship, seeking consolation and, eventually, redemption through basic compassion.', null, 'shawshank-redemption.jpeg'),
+('Fight Club', 'Drama;Mystery', 'David Fincher', '1999-10-15', 139, 'An insomniac office worker and a devil-may-care soap maker form an underground fight club that evolves into much more.', null, 'fight-club.jpeg-club.jpeg'),
+('Inception', 'Action;Adventure', 'Christopher Nolan', '2010-07-08', 148, 'A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O., but his tragic past may doom the project and his team to disaster.', null, 'inception.jpeg'),
+('Interstellar', 'Adventure;Drama', 'Christopher Nolan', '2014-10-26', 149, 'When Earth becomes uninhabitable in the future, a farmer and ex-NASA pilot, Joseph Cooper, is tasked to pilot a spacecraft, along with a team of researchers, to find a new planet for humans.', null, 'interstellar.jpeg'),
+('Spirited Away', 'Animation;Adventure', 'Hayao Miyazaki', '2001-07-20', 125, 'During her family('')s move to the suburbs, a sullen 10-year-old girl wanders into a world ruled by gods, witches and spirits, a world where humans are changed into beasts.', null, 'spirited-away.jpeg')
 
 insert into screen values 
 (1, 100, 10, 10),

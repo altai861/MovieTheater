@@ -20,8 +20,8 @@ class Login {
             phonenumber: phonenumber
         })
         .then(function(response) {
-            localStorage.setItem("customerId", response.data.customerId)
-            localStorage.setItem("username", response.data.username)
+            sessionStorage.setItem("customerId", response.data.customerId)
+            sessionStorage.setItem("username", response.data.username)
             window.location.replace("/");
             console.log(response.data);
         })

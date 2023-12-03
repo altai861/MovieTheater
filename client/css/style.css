@@ -1,0 +1,40 @@
+* {
+    font-family: "arial";
+}
+
+.st {
+    border: 1px solid black;
+    margin: 10px;
+    padding: 5px;
+    width: 400px;
+    text-align: center;
+}
+
+.st:hover {
+    background-color: aliceblue;
+}
+
+.showtimes {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.navbar {
+    display: flex;
+    padding: 20px;
+    background-color: azure;
+}
+
+.navbar-element {
+    margin-right: 20px;
+}
+
+.navbar-element a {
+    text-decoration: none;
+    color:black;
+    font-size: large;
+}
+
+.navbar-element a:hover {
+    color:rgb(122, 108, 108)
+}
