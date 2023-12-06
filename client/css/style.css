@@ -79,6 +79,7 @@ td.selected {
 
 .my-tickets {
     display: flex;
+    flex-wrap: wrap;
     border-top: 1px solid black;
     width: 100%;
 }

@@ -43,11 +43,10 @@ const addTickets = (req, res) => {
             if (err) {
                 console.log(err);
                 res.status(500).json({ message: "Internal error while inserting" })
-            } else {
-                res.status(200).json({ message: "Inserted to tickets successfully" })
             }
         })
     })
+    res.status(200).json({ message: "Inserted to tickets successfully" })
 }
 
 const getTicketsDate = (req, res) => {
