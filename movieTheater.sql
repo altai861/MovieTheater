@@ -69,7 +69,7 @@ create table tickets (
     uzverDate date not null,
     suudliinDugaar int not null,
     borluulsanUne float,
-    PRIMARY key (uzverId, suudliinDugaar)
+    PRIMARY key (uzverId, suudliinDugaar, uzverDate)
 )
 
 
