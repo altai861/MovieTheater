@@ -2488,3 +2488,11 @@
 20231206	10:25:00	be4c4ed6-46c3-46d5-8c9b-36bbbd63ffb3	GET	/showtime/1000/1	http://localhost:5173
 20231206	10:25:00	e2d14eb2-526a-45d9-9fdd-69f2bce4e761	GET	/tickets/1000	http://localhost:5173
 20231206	10:25:00	27b05e36-8703-45fb-8178-aca935cbda71	GET	/posterImages/spiderman-across-spider-verse.jpeg	undefined
+20231206	10:37:31	98917e48-2e29-4c84-a81f-3d094c40c336	GET	/showtime/1000	http://localhost:5173
+20231206	10:37:31	9ae33a6d-98d2-4260-a7da-6b2e6aa30b7e	GET	/showtime/1000/1	http://localhost:5173
+20231206	10:37:31	a9404518-6bcc-48bd-b16f-0183d5ae88a9	GET	/tickets/1000	http://localhost:5173
+20231206	10:37:31	e84153d3-5fd4-40fa-a842-4cb9722e5af7	GET	/posterImages/spiderman-across-spider-verse.jpeg	undefined
+20231206	10:42:20	ee3a1f01-5a86-4bf0-b258-becf8e37f02e	GET	/showtime/1000	http://localhost:5173
+20231206	10:42:20	415a2220-5c4a-4124-832e-6caf1321b087	GET	/showtime/1000/1	http://localhost:5173
+20231206	10:42:20	985ad308-913b-4e3e-898c-22526686b310	GET	/tickets/1000	http://localhost:5173
+20231206	10:42:20	1b8ffea2-70c1-435e-a16c-8f18fc125c98	GET	/posterImages/spiderman-across-spider-verse.jpeg	undefined
