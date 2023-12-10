@@ -8,5 +8,8 @@ router.route("/login")
 router.route("/register")
     .post(authControllers.register)
 
+router.route("/balance/:userId")
+    .get(authControllers.balance)
+
 
 module.exports = router;

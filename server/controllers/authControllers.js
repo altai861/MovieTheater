@@ -62,7 +62,22 @@ const register = async (req, res) => {
     }
 }
 
+const balance = async (req, res) => {
+    const userId = req.params.userId
+    var request = new sql.Request();
+
+    request.query(`select balance from customers where customerId = ${userId}`, (err, recordset) => {
+        if (err) {
+            console.log(err)
+            res.status(500).json({ message: `Internal server error while getting the balance of user ${userId}` })
+        } else {
+            res.status(200).json(recordset.recordset[0])
+        }
+    })
+}
+
 module.exports = {
     login, 
-    register
+    register,
+    balance
 }

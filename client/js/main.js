@@ -28,11 +28,23 @@ document.addEventListener("DOMContentLoaded", () => {
 })
 
 
+function getBalance(userId) {
+  axios.get(`http://localhost:3500/auth/balance/${userId}`)
+  .then((response) => {
+    console.log(response.data)
+    document.getElementById("balance").innerHTML = "Танд байгаа мөнгө: " + response.data.balance;
+  })
+  .catch((response) => {
+    console.error(response)
+  })
+}
+
 
 function validateAuth(customerId) {
     if (customerId) {
       console.log(customerId);
       document.querySelector("body").style.display = "block";
+      getBalance(customerId)
       return true
     } else {
       window.location.replace("/html/login.html");

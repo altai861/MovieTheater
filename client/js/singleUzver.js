@@ -66,6 +66,9 @@ async function renderBuyTicket(uzverId, userId) {
                 location.reload()
             })
             .catch(function(error) {
+                alert('Таны үлдэгдэл хүрэлцэхгүй байна.')
+                setTimeout(2000);
+                location.reload();
                 console.error(error)
             })
         }
@@ -240,6 +243,8 @@ function renderUzver(uzver) {
     const desc = document.getElementById("desc");
     const date = document.getElementById("date");
     const time = document.getElementById("time");
+
+    const price = document.getElementById("price");
     
     title.innerText = uzver.title
     poster.src = `http://localhost:3500/posterImages/${uzver.posterPath}`;
@@ -248,5 +253,6 @@ function renderUzver(uzver) {
     desc.innerText = uzver.movieDescription
     date.innerText = uzver.uzverDateStart.split("T")[0] + " - " + uzver.uzverDateEnd.split("T")[0]
     time.innerText = uzver.startTime.split("T")[1].substring(0, 5) + " - " +  uzver.endTime.split("T")[1].substring(0, 5)
+    price.innerHTML = "Үнэ: " + uzver.price
 }
 

@@ -16,7 +16,8 @@ create table customers (
     username nvarchar(50),
     email nvarchar(50),
     phonenumber nvarchar(50),
-    hayg nvarchar(50)
+    hayg nvarchar(50),
+    balance float
 )
 
 
@@ -74,9 +75,9 @@ create table tickets (
 
 
 insert into customers values 
-('Altai', 'bbyyydriver@gmail.com', 90292709, null),
-('Naljirmaa', 'naljirmaa@gmail.com', 90909090, null),
-('Bilegtsaikhan', 'bilgee@yahoo.com', 99999090, null)
+('Altai', 'bbyyydriver@gmail.com', 90292709, null, 1000000),
+('Naljirmaa', 'naljirmaa@gmail.com', 90909090, null, 100000),
+('Bilegtsaikhan', 'bilgee@yahoo.com', 99999090, null, 10000)
 
 insert into theaters VALUES
 ('Urguu', N'WVFF+8W5, Ард Аюушийн өргөн чөлөө, Ulaanbaatar 16091', 5),
@@ -91,7 +92,7 @@ insert into movies values
 ('Braveheart', 'Biography;Drama', 'Mel Gibson', '1995-05-19', 178, 'Scottish warrior William Wallace leads his countrymen in a rebellion to free his homeland from the tyranny of King Edward I of England.', null, 'braveheart.jpeg'),
 ('Transformers','Action;Adventure', 'Micheal Bay', '2007-06-27', 144 , 'An ancient struggle between two Cybertronian races, the heroic Autobots and the evil Decepticons, comes to Earth, with a clue to the ultimate power held by a teenager.', null, 'transformers.jpeg'),
 ('The Shawshank Redemption', 'Drama;Mystery', 'Frank Darabont', '1994-09-13', 142, 'Over the course of several years, two convicts form a friendship, seeking consolation and, eventually, redemption through basic compassion.', null, 'shawshank-redemption.jpeg'),
-('Fight Club', 'Drama;Mystery', 'David Fincher', '1999-10-15', 139, 'An insomniac office worker and a devil-may-care soap maker form an underground fight club that evolves into much more.', null, 'fight-club.jpeg-club.jpeg'),
+('Fight Club', 'Drama;Mystery', 'David Fincher', '1999-10-15', 139, 'An insomniac office worker and a devil-may-care soap maker form an underground fight club that evolves into much more.', null, 'fight-club.jpeg'),
 ('Inception', 'Action;Adventure', 'Christopher Nolan', '2010-07-08', 148, 'A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O., but his tragic past may doom the project and his team to disaster.', null, 'inception.jpeg'),
 ('Interstellar', 'Adventure;Drama', 'Christopher Nolan', '2014-10-26', 149, 'When Earth becomes uninhabitable in the future, a farmer and ex-NASA pilot, Joseph Cooper, is tasked to pilot a spacecraft, along with a team of researchers, to find a new planet for humans.', null, 'interstellar.jpeg'),
 ('Spirited Away', 'Animation;Adventure', 'Hayao Miyazaki', '2001-07-20', 125, 'During her family('')s move to the suburbs, a sullen 10-year-old girl wanders into a world ruled by gods, witches and spirits, a world where humans are changed into beasts.', null, 'spirited-away.jpeg')
@@ -121,6 +122,8 @@ insert into uzveruud values
 (108, 2, '15:30:00', '18:00:00', '2023-11-13', '2023-12-31', 10000, 507),
 (109, 2, '15:30:00', '18:00:00', '2023-11-13', '2023-12-31', 10000, 508),
 (110, 2, '15:30:00', '18:00:00', '2023-11-13', '2023-12-31', 10000, 509)
+
+
 
 
 select * from uzveruud 

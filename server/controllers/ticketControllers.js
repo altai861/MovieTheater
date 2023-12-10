@@ -37,6 +37,9 @@ const addTickets = (req, res) => {
     console.log(userId, uzverId, suudliinDugaaruud, date, price)
     var request = new sql.Request();
     
+    const suudliinDugaaruudString  = suudliinDugaaruud.join(',');
+
+    /* 
     suudliinDugaaruud.map((num) => {
         request.query(`insert into tickets values
         (${userId}, ${uzverId}, '${date}', ${num}, ${price})`, (err, recordset) => {
@@ -46,7 +49,27 @@ const addTickets = (req, res) => {
             }
         })
     })
-    res.status(200).json({ message: "Inserted to tickets successfully" })
+    */
+    try{
+        request.input('SeatNumbers', sql.NVarChar(sql.MAX), suudliinDugaaruudString)
+        request.input('UserId', sql.Int, userId);
+        request.input('ShowtimeId', sql.Int, uzverId);
+        request.input('ReservationDate', sql.Date, date);
+        request.input('ReservationPrice', sql.Float, price);
+
+        const result = request.execute("ticketAvah");
+        const resultCode = result.recordset[0].ResultCode
+        const resultMes = result.recordset[0].ResultMessage;
+        if (resultCode === 0) {
+            res.status(200).json({ message: resultMes })
+        } else {
+            res.status(200).json({ message: resultMes })
+        }
+
+        res.status(200).json({ message: "Seats reserved successfully" });
+    } catch(err) {
+        res.status(500).json({ message: "Internal server error while inserting into tickets" });
+    }
 }
 
 const getTicketsDate = (req, res) => {
